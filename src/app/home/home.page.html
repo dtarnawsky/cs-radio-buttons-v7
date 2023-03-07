@@ -13,8 +13,31 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button id="open-modal" expand="block">Open</ion-button>
+  <h1>{{fuel}}</h1>
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Welcome</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="cancel()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-radio-group id="fuels-radio-group" name="fuels-radio-group" [value]="fuel" (ionChange)="setFuel($event)"
+        aria-label="Fuels Group" tabindex="-1">
+        <ng-container *ngFor="let fuelOption of fuelList">
+          <ion-radio value="{{fuelOption.value}}" aria-describedby="fuels-radio-group">{{ fuelOption.text }}</ion-radio>
+        </ng-container>
+      </ion-radio-group>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
 </ion-content>
