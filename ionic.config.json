@@ -1,0 +1,7 @@
+{
+  "name": "cs-radio-buttons-v7",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
